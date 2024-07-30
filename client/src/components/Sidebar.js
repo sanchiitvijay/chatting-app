@@ -6,12 +6,11 @@ import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
 import { useDispatch, useSelector } from 'react-redux';
 import EditUserDetails from './EditUserDetails';
-import Divider from './Divider';
 import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa6";
-import { logout } from '../redux/userSlice';
+import { logout, setUserId } from '../redux/userSlice';
 
 const Sidebar = () => {
     const user = useSelector(state => state?.user)
@@ -120,7 +119,11 @@ const Sidebar = () => {
                     {
                         allUser.map((conv,index)=>{
                             return(
-                                <NavLink to={"/"+conv?.userDetails?._id} key={conv?._id} className='flex items-center gap-2 py-3 px-2 border border-transparent hover:border-custom-gray1 rounded hover:bg-custom-gray2 cursor-pointer'>
+                                
+                                <NavLink to={"/"+conv?.userDetails?._id} 
+                                onClick={()=>(setUserId(conv?.userDetails?._id))} 
+                                key={conv?._id} 
+                                className='flex items-center gap-2 py-3 px-2 border border-transparent hover:border-custom-gray1 rounded hover:bg-custom-gray2 cursor-pointer'>
                                     <div className='rounded-full border border-white' >
                                         <Avatar
                                             imageUrl={conv?.userDetails?.profile_pic}
@@ -169,14 +172,14 @@ const Sidebar = () => {
             {/**edit user details*/}
             {
                 editUserOpen && (
-                    <EditUserDetails onClose={()=>setEditUserOpen(false)} user={user}/>
+                    <EditUserDetails onClose={()=>(setEditUserOpen(false))} user={user}/>
                 )
             }
 
             {/**search user */}
             {
                 openSearchUser && (
-                    <SearchUser onClose={()=>setOpenSearchUser(false)}/>
+                    <SearchUser onClose={()=>(setOpenSearchUser(false), setUserId(user._id))}/>
                 )
             }
 

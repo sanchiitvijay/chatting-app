@@ -9,10 +9,17 @@ import io from 'socket.io-client'
 
 const Home = () => {
   const user = useSelector(state => state.user)
+  const token = useSelector(state => state.user.token)
+  console.log("token in home-----------------",token)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
 
+  // if(!token) {
+  //   console.log("token----------",token)
+  //   console.log("-------------token home-------------")
+  //   navigate('/login')
+  // }
   console.log('user',user)
   const fetchUserDetails = async()=>{
     try {

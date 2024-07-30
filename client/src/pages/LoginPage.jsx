@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setToken} from '../redux/userSlice';
 
 const Login = () => {
+    // const user = useSelector(state => state.user);
+    const token = useSelector(state => state.user.token);
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -22,7 +24,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
-
+    console.log("token-----------", token)
     useEffect(() => {
         if (location.pathname !== '/login') {
             navigate('/login');
@@ -47,6 +49,8 @@ const Login = () => {
             if (response.data.success) {
                 dispatch(setToken(response?.data?.token));
                 localStorage.setItem('token', response?.data?.token);
+                console.log("login token---------", response?.data?.token)
+                // console.log("login token 2 ------------", abc)
 
                 setData({
                     email: "",
