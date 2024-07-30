@@ -84,7 +84,7 @@ const EditUserDetails = ({onClose,user}) => {
     }
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 text-white bg-custom-gray4 bg-opacity-40 flex justify-center items-center z-10'>
-        <div className='bg-custom-gray3 p-4 py-6 m-1 rounded-md-lg w-full max-w-sm'>
+        <div className='bg-custom-gray3 p-4 py-6 m-1 rounded-lg w-full max-w-sm'>
             <h2 className='font-semibold'>Profile Details</h2>
             <p className='text-sm '>Edit user details</p>
 
@@ -97,7 +97,7 @@ const EditUserDetails = ({onClose,user}) => {
                         id='name'
                         value={data.name}
                         onChange={handleOnChange}
-                        className='w-full py-1 px-2 bg-custom-gray2 rounded-md-md focus:outline-white border-0.5'
+                        className='w-full py-1 px-2 bg-custom-gray2 rounded-md focus:outline-white border-0.5'
                     />
                 </div>
 
@@ -125,8 +125,8 @@ const EditUserDetails = ({onClose,user}) => {
 
                 <Divider/>    
                 <div className='flex gap-2 w-fit ml-auto '>
-                    <button onClick={onClose} className='border-custom-gray5 border px-4 py-1 rounded-md hover:bg-custom-gray2 text-white'>Cancel</button>
-                    <button onClick={handleSubmit} className='border-custom-gray5 bg-custom-gray5 text-white border px-4 py-1 rounded-md hover:bg-custom-gray4'>Save</button>
+                    <button onClick={onClose} className='border-custom-gray5 border px-4 py-1 rounded hover:bg-custom-gray2 text-white'>Cancel</button>
+                    <button onClick={handleSubmit} className='border-custom-gray5 bg-custom-gray5 text-white border px-4 py-1 rounded hover:bg-custom-gray4'>Save</button>
                 </div>
             </form>
         </div>
