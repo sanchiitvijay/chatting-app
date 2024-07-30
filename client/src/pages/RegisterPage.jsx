@@ -66,7 +66,7 @@ const RegisterPage = () => {
               profile_pic : ""
             })
 
-            navigate('/email')
+            navigate('/login')
 
         }
     } catch (error) {
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                   id='name'
                   name='name'
                   placeholder='enter your name' 
-                  className='bg-custom-gray2 px-2 rounded py-1 focus:outline-custom-gray1'
+                  className='bg-custom-gray4 px-2 rounded py-1 focus:outline-custom-gray1'
                   value={data.name}
                   onChange={handleOnChange}
                   required
@@ -103,7 +103,7 @@ const RegisterPage = () => {
                   id='email'
                   name='email'
                   placeholder='enter your email' 
-                  className='bg-custom-gray2 rounded px-2 py-1 focus:outline-custom-gray1'
+                  className='bg-custom-gray4 rounded px-2 py-1 focus:outline-custom-gray1'
                   value={data.email}
                   onChange={handleOnChange}
                   required
@@ -117,7 +117,7 @@ const RegisterPage = () => {
                   id='password'
                   name='password'
                   placeholder='enter your password' 
-                  className='bg-custom-gray2 px-2 py-1 rounded focus:outline-custom-gray1'
+                  className='bg-custom-gray4 px-2 py-1 rounded focus:outline-custom-gray1'
                   value={data.password}
                   onChange={handleOnChange}
                   required
@@ -127,7 +127,7 @@ const RegisterPage = () => {
               <div className='flex flex-col gap-1'>
                 <label htmlFor='profile_pic'>Photo :
 
-                  <div className='h-14 bg-custom-gray2 rounded px-2 py-1 focus:outline-custom-gray1 flex justify-center items-center border hover:border-custom-gray1   cursor-pointer'>
+                  <div className='h-14 mt-2 bg-custom-gray4 rounded px-2 py-1 focus:outline-custom-gray1 flex justify-center items-center border hover:border-custom-gray1   cursor-pointer'>
                       <p className='text-sm max-w-[300px] text-ellipsis line-clamp-1'>
                         {
                           uploadPhoto?.name ? uploadPhoto?.name : "Upload profile photo"
@@ -149,21 +149,21 @@ const RegisterPage = () => {
                   type='file'
                   id='profile_pic'
                   name='profile_pic'
-                  className='bg-custom-gray2 px-2 py-1 focus:outline-custom-gray1 hidden'
+                  className='bg-custom-gray4 px-2 py-1 focus:outline-custom-gray1 hidden'
                   onChange={handleUploadPhoto}
                 />
               </div>
 
 
               <button
-               className='bg-custom-gray5 px-2 py-1 focus:bg-custom-gray1 text-lg hover:bg-custom-gray4 rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
+               className='bg-custom-gray4 px-2 py-1  focus:bg-custom-gray1 text-lg hover:bg-custom-gray4 rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
               >
                 Register
               </button>
 
           </form>
 
-          <p className='my-3 text-center'>Already have account ? <Link to={"/email"} className='hover:underline font-semibold'>Login</Link></p>
+          <p className='my-3 text-center'>Already have account ? <Link to={"/login"} className='hover:underline font-semibold'>Login</Link></p>
         </div>
     </div>
   )

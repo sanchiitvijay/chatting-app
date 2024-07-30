@@ -268,7 +268,7 @@ const MessagePage = () => {
           {/**send message */}
           <section className='h-16 bg-custom-gray4 flex items-center px-4'>
               <div className='relative '>
-                  <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-11 h-11 rounded-full hover:bg-custom-gray1 hover:text-white'>
+                  <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-11 h-11 rounded-full hover:bg-custom-gray2 hover:text-white'>
                     <FaPlus size={20} color={"white"}/>
                   </button>
 

@@ -1,14 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import RegisterPage from "../pages/RegisterPage";
-import CheckEmailPage from "../pages/CheckEmailPage";
-import CheckPasswordPage from "../pages/CheckPasswordPage";
 import Home from "../pages/Home";
 import MessagePage from "../components/MessagePage";
 import AuthLayouts from "../layout";
 import Forgotpassword from "../pages/Forgotpassword";
 import PageNotFound from "../pages/PageNotFound";
-
+import LoginPage from "../pages/LoginPage";
 const router = createBrowserRouter([
 {
     path : "/",
@@ -19,12 +17,8 @@ const router = createBrowserRouter([
             element : <AuthLayouts><RegisterPage/></AuthLayouts>
         },
         {
-            path : 'email',
-            element : <AuthLayouts><CheckEmailPage/></AuthLayouts>
-        },
-        {
-            path : 'password',
-            element : <AuthLayouts><CheckPasswordPage/></AuthLayouts>
+            path : "login",
+            element : <AuthLayouts><LoginPage/></AuthLayouts>
         },
         {
             path : 'forgot-password',
