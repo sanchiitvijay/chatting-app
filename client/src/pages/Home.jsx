@@ -28,22 +28,24 @@ const Home = () => {
           url : URL,
           withCredentials : true
         })
+        console.log("token in home -------------",token)
+        console.log("response in home -------------",response)
 
         dispatch(setUser(response.data.data))
 
-        if(response.data.data.logout){
-            dispatch(logout())
-            navigate("/login")
-        }
+        // if(response.data.data.logout){
+        //     dispatch(logout())
+        //     navigate("/login")
+        // }
         console.log("current user Details",response)
     } catch (error) {
         console.log("error",error)
     }
   }
 
-  useEffect(()=>{
-    fetchUserDetails()
-  },[])
+  // useEffect(()=>{
+  //    UserDetails()
+  // },[])
 
   /***socket connection */
   useEffect(()=>{
@@ -67,6 +69,7 @@ const Home = () => {
 
 
   const basePath = location.pathname === '/'
+  console.log("aaya hai home pe----------", token)
   return (
     <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>
         <section className={`${!basePath && "hidden"} lg:block`}>
