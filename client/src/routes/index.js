@@ -7,39 +7,56 @@ import AuthLayouts from "../layout";
 import Forgotpassword from "../pages/Forgotpassword";
 import PageNotFound from "../pages/PageNotFound";
 import LoginPage from "../pages/LoginPage";
-const router = createBrowserRouter([
-{
-    path : "/",
-    element : <App/>,
-    children : [
-        {
-            path : "register",
-            element : <AuthLayouts><RegisterPage/></AuthLayouts>
-        },
-        {
-            path : "login",
-            element : <AuthLayouts><LoginPage/></AuthLayouts>
-        },
-        {
-            path : 'forgot-password',
-            element : <AuthLayouts><Forgotpassword/></AuthLayouts>
-        },
-        {
-            path : "",
-            element : <Home/>,
-            children : [
-                {
-                    path : ':userId',
-                    element : <MessagePage/>
-                },
-            ]
-        },
-        {
-            path:"*",
-            element: <PageNotFound/>
-        }
-    ]
-}
-])
 
-export default router
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "register",
+        element: (
+          <AuthLayouts>
+            <RegisterPage />
+          </AuthLayouts>
+        ),
+      },
+      {
+        path: "login",
+        element: (
+          <AuthLayouts>
+            <LoginPage />
+          </AuthLayouts>
+        ),
+      },
+      {
+        path: "forgot-password",
+        element: (
+          <AuthLayouts>
+            <Forgotpassword />
+          </AuthLayouts>
+        ),
+      },
+      {
+        path: "",
+        element: <Home />,
+        children: [
+          {
+            path: ":userId",
+            element: <MessagePage />,
+          },
+        ],
+      },
+      {
+        path: "page-not-found",
+        element:( 
+            <AuthLayouts>
+                <PageNotFound />
+            </AuthLayouts>
+        ),
+      },
+    ],
+  },
+]);
+
+export default router;

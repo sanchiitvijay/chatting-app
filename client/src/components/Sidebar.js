@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa6";
-import { logout } from '../redux/userSlice';
+import { logout, setRecieverUserId } from '../redux/userSlice';
 
 const Sidebar = () => {
     const user = useSelector(state => state?.user)
@@ -59,16 +59,22 @@ const Sidebar = () => {
         localStorage.clear()
     }
 
+    const addReceiverUser = (userId) => {
+        console.log('addReceiverUser in sidebar----------', userId)
+        dispatch(setRecieverUserId(userId))
+    }
+
   return (
     <div className='w-full h-full grid grid-cols-[48px,1fr] bg-custom-gray3'>
             <div className=' w-12 h-full bg-custom-gray4 rounded-tr-lg rounded-br-lg py-5 text-slate-600 flex flex-col justify-between'>
                 <div>
-                    <NavLink className={({isActive})=>`w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-custom-gray2  rounded ${isActive && "bg-custom-gray3 "}`} title='chat'>
+                    <Link className={({isActive})=>`w-12 h-12 content-center flex justify-center items-center cursor-pointer hover:bg-custom-gray2  rounded ${isActive && "bg-custom-gray3 "}`} title='chat'>
                         <IoChatbubbleEllipses
                             size={20}
                             color={"white"}
+                            className='mx-auto'
                         />
-                    </NavLink>
+                    </Link>
 
                     <div title='add friend' onClick={()=>setOpenSearchUser(true)} className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-custom-gray2 rounded' >
                         <FaUserPlus 
@@ -120,8 +126,8 @@ const Sidebar = () => {
                         allUser.map((conv,index)=>{
                             return(
                                 console.log("conv----------",conv),
-                                <NavLink to={"/"+conv?.userDetails?._id} 
-                                // onClick={()=>(setUserId(conv?.userDetails?._id))} 
+                                <Link to={"/"+conv?.userDetails?._id} 
+                                onClick={() => addReceiverUser(conv?.receiver?._id)}
                                 key={conv?._id} 
                                 className='flex items-center gap-2 py-3 px-2 border border-transparent hover:border-custom-gray1 rounded hover:bg-custom-gray2 cursor-pointer'>
                                     <div className='rounded-full border border-white' >
@@ -162,7 +168,7 @@ const Sidebar = () => {
                                         )
                                     }
 
-                                </NavLink>
+                                </Link>
                             )
                         })
                     }

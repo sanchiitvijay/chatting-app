@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { logout, setOnlineUser, setSocketConnection, setUser } from '../redux/userSlice'
 import Sidebar from '../components/Sidebar'
 import wallpaper from '../assets/wallpaper.jpg'
@@ -14,6 +14,17 @@ const Home = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+  const params = useParams()
+
+  if(!user?._id){
+    navigate("/login")
+  }
+
+  if(user?.receiverUserId !== useParams()?.userId){
+    console.log("receiverUserId in home---------",user?.receiverUserId)
+    console.log("params in home----------",params?.userId)
+    navigate(`/page-not-found`)
+  }
 
   // if(!token) {
   //   console.log("token----------",token)
